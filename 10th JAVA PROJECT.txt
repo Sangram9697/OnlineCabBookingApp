@@ -1,0 +1,886 @@
+//To book a cab using OLA CABS
+import java.util.*;
+import java.awt.*;
+import java.util.Calendar;
+public class Project
+{
+    Scanner sc=new Scanner(System.in);
+    Date d=new Date();
+    String name,ploc,dloc,rdtype,car,category,driver,uname,pswrd,vno,pay,pno,ss;
+    double amt,tfare;  
+    int ch,ch1,ch2,dis,rate,age,bsfare,pin,cvv;     
+    long dpno;
+    char c; 
+    Project()
+    {
+        name="";
+        ploc="";
+        dloc="";
+        rdtype="";
+        car=" ";
+        category="";
+        driver="";
+        uname="";
+        pswrd="";
+        vno="";
+        pay="";
+        ss="";
+        amt=0.0;
+        tfare=0.0;  
+        ch=0;
+        ch1=0;
+        ch2=0;
+        dis=0;
+        rate=0;
+        age=0;
+        bsfare=0;
+        pin=0;
+        cvv=0;
+        pno="";       
+        dpno=0l;    
+}
+public static void main(String args[])
+{
+	Project obj=new Project();
+    obj.title();         
+}
+public void title()
+{
+	System.out.println("          #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#");
+	System.out.println();
+	System.out.println("-------------------------------------------------------------");
+	System.out.println("             *******WELCOME TO OLA CABS*******");
+	System.out.println("-------------------------------------------------------------");
+	System.out.println();
+	System.out.println("       #*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#");
+	System.out.println();
+	System.out.println();
+	accept();
+}
+
+public void accept()
+{
+	Scanner sc=new Scanner(System.in);        
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println("                 DETAILS");
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println();       
+	System.out.print("Enter your Name: ");
+	name=sc.nextLine();
+	System.out.println();
+	System.out.print("Enter your phone number: ");
+	pno=sc.next();      
+	if(pno.length()!=10)
+	{
+	System.out.println("Wrong phone number! Please enter your phone number again");
+	String pno1=sc.next();
+	pno=pno1;
+	 }
+	System.out.println();
+	System.out.print("Enter User Name: ");
+	uname=sc.next();  
+	System.out.println();
+	System.out.print("Enter your password: ");
+	pswrd=sc.next();
+	System.out.println();
+	if(uname.equals(pswrd)==true)
+	{
+		ride();
+	}
+	else
+	{
+		System.out.println();
+		System.out.println("Wrong user name or password!!Please enter again.");
+		String uname=sc.next();
+		String pswrd=sc.next();
+		ride();
+	} 
+	System.out.println();
+}
+	
+public void ride()
+{
+	Scanner sc=new Scanner(System.in);        
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println("                      TYPES OF RIDES");
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println();
+	System.out.println("We have three types of rides :-");
+	System.out.println();
+	System.out.println("1.Daily ride  -if you want to ride within the city and distance is less than 40 km.");   
+	System.out.println("2.Outstation  -if you want go outside the city and distance is more than 40 km.");        
+	System.out.println("3.Rental      -if you want roam within the city.");
+	System.out.println();
+	System.out.println("Enter your choice-(Wrong choice to exit)");
+	ch=sc.nextInt();        
+	if(ch==0||ch>3)
+	        {
+	System.out.println("Exiting...");
+	System.exit(0);  
+	        }
+	System.out.println();
+	if(ch==1)        
+	dailyride(ch);
+	else if(ch==2)
+	outstation(ch);
+	else if(ch==3)
+	rental(ch);
+}
+
+public void dailyride(int ch1)
+{
+	Scanner sc=new Scanner(System.in);
+	switch(ch1)
+    {
+    	case 1:
+     	{
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("                            DAILYRIDE");
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println();
+			rdtype="Daily Ride";
+			System.out.println(">> The perfect way to get through your everday travel needs.");
+			System.out.println(">> City taxs are available 24/7 andyou can book travel in an instant.");
+			System.out.println(">> With rides starting from as low as Rs.6/km,you can choose from a wide range of option!");
+			System.out.println();
+			System.out.println("----------------------------------------------------------------------------"); 
+			System.out.println();
+			System.out.print("Enter your pick-up location: ");
+			ploc=sc.nextLine();
+			System.out.println();
+			
+			System.out.print("Enter your drop-off location: ");
+			dloc=sc.nextLine();
+			System.out.println();
+			
+			System.out.print("Enter the estimated distance: ");
+			dis=sc.nextInt();
+			System.out.println();
+			System.out.println("----------------------------------------------------------------------------");
+			System.out.println("Cab options:");
+			System.out.println("1.Micro       - Ideal for short distances");
+			System.out.println("2.Prime Sedan - Ideal for business travel,family outings");
+			System.out.println("3.Prime SUV   - Ideal for picnics");
+			System.out.println("4.Prime Play  - Ideal for long rides,family outings");
+			System.out.println(); 
+			System.out.print("Enter your choice-(Wrong choice to exit): ");
+			               ch1=sc.nextInt();
+			System.out.println();
+			System.out.println("----------------------------------------------------------------------------");
+			switch(ch1)
+            {
+            	case 1:
+                {
+					category="Micro";
+					System.out.println("Micro");
+					System.out.println();
+					System.out.println("> Comfy AC hatchbacks at pocket friendly rates");
+					System.out.println("> A regular car that becomes your everyday ride");
+					System.out.println();
+					System.out.println("No. of seats:4");
+					System.out.println("Base fare: Rs.45");
+					System.out.println("Rate: Rs.6/km");
+					System.out.println();
+					rate=6;
+					bsfare=45;
+					System.out.println(" Features:");
+					System.out.println("-Small,comfortable car that can seat up to 4 passengers");
+					System.out.println("-Can carry upto 2 pieces of luggage");
+					System.out.println("-Onboard GPS");
+					System.out.println("-Ride within your budget.Economical everyday ride");
+					System.out.println("-AC available");
+					System.out.println();                      
+					System.out.println("Vehicle Types:");
+					System.out.println("1.Datsun Go");
+					System.out.println("2.Hyundai Eon");
+					System.out.println("3.Suzuki Alto");                          
+					System.out.println();
+					System.out.print("Enter your choice -(Wrong choice to exit): ");
+					                      ch2=sc.nextInt();
+					if(ch2==1)
+					car="Datsun go";
+					else if(ch2==2)
+					car="Hyundai Eon";
+					else if(ch2==3)
+					car="Suzuki Alto";
+					else
+					{
+						System.out.println("Exiting...");
+						System.exit(0);
+					}                      
+					System.out.println();
+					break;
+                }
+
+            	case 2:
+            	{
+	            	category="Prime sedan";                                          
+	            	System.out.println("Prime sedan");
+	            	System.out.println();
+	            	System.out.println("> Top-rated sedans with free Wi-fi");
+	            	System.out.println("> Add comfort of a high-rated sedan to your daily commute");
+	            	System.out.println("> Enjoy extra legroom and ample boot space"); 
+	            	System.out.println();
+	            	System.out.println("No. of seats:4");
+	            	System.out.println("Base fare:Rs.52");
+	            	System.out.println("Rate: Rs.9/km");
+	            	rate=9;
+	            	bsfare=52;
+	            	System.out.println();
+	            	System.out.println("Features:");
+	            	System.out.println("-Sit back and unwind with extra legroom");
+	            	System.out.println("-Top quality car drive by 4+ rated drivers");
+	            	System.out.println("-Free Wi-Fi");
+	            	System.out.println("-Onboard GPS");
+	            	System.out.println("-AC available");
+	            	System.out.println("-Can carry more luggage");                                                  
+	            	System.out.println(); 
+	            	System.out.println("Vehicle Types:");
+	            	System.out.println("1.Nissan Sunny");
+	            	System.out.println("2.Suzuki Dzire");
+	            	System.out.println("3.Toyota Etios");
+	            	System.out.println();
+	            	System.out.print("Enter your choice -(Wrong choice to exit): ");
+	            	ch2=sc.nextInt();                         
+	            	if(ch2==1)
+	            	car="Nissan Sunny";
+	            	else if(ch2==2)
+	            	car="Suzuki Dzire";
+	            	else if(ch2==3)
+	            	car="Toyota Etios";
+	            	else
+	            	{
+	            	System.out.println("Exiting...");
+	            	System.exit(0);
+	            	} 
+	            	System.out.println();
+	            	break;
+            	}
+
+            	case 3:
+                {
+                	category="Prime SUV";
+                	System.out.println("Prime SUV");
+                	System.out.println();
+                	System.out.println("> Spacious SUV's with more seats and free Wi-Fi");
+                	System.out.println("> Supersized rides");
+                	System.out.println("> Enjoy extra legroom and ample boot space for everyone");
+                	System.out.println();
+                	System.out.println("No. of seats:6");
+                	System.out.println("Base fare:Rs.80");
+                	System.out.println("Rate: Rs.14/km");
+                	rate=14;
+                	bsfare=80;
+                	System.out.println();
+                	System.out.println("Features:");
+                	System.out.println("-More seats for entire group of family or friends");
+                	System.out.println("-Top quality car drive by 4+ rated drivers");
+                	System.out.println("-Onboard GPS");
+                	System.out.println("-Free Wi-Fi");
+                	System.out.println("-AC available");
+                	System.out.println("Can carry more luggage");
+                	System.out.println();                     
+                	System.out.println("Vehicle Types:");
+                	System.out.println("1.Toyota Innova");
+                	System.out.println("2.Maruti Ertiga");
+                	System.out.println("3.Mahindra Marrazo");
+                	System.out.println();
+                	System.out.print("Enter your choice -(Wrong choice to exit): ");
+                	                      ch2=sc.nextInt();
+                	if(ch2==1)
+                	car="Toyota Innova";
+                	else if(ch2==2)
+                	car="MarutiErtiga";
+                	else if(ch2==3)
+                	car="MahinderaMarrazo";
+                	else
+                	                      {
+                	System.out.println("Exiting...");
+                	System.exit(0);
+                	                      } 
+                	System.out.println();
+                	break;
+                }
+
+            	case 4:
+                {
+                	category="Prime Play";
+                	System.out.println("Prime Play");
+                	System.out.println();
+                	System.out.println("> High rated Prime sedans with in-cab entertainment.");
+                	System.out.println("> Enjoy movies,music,Tv shows ,radio and more ont go");
+                	System.out.println();                   
+                	System.out.println("No. of seats:4");
+                	System.out.println("Base fare:Rs.55");
+                	System.out.println("Rate: Rs.9/km");
+                	rate=9;
+                	bsfare=55;
+                	System.out.println();
+                	System.out.println("Features:");
+                	System.out.println("-Play movies,music,tv shows and more in HD and surround sound");
+                	System.out.println("-Play from our library of Apple music,Eros nom and more");
+                	System.out.println("-Onboard GPS");
+                	System.out.println("-Free Wi-Fi");
+                	System.out.println("-AC available");
+                	System.out.println();
+                	System.out.println("Vehicle Types:");
+                	System.out.println("1.Suzuki Ciaz");
+                	System.out.println("2.Toyota Yaris");
+                	System.out.println("3.Honda City");
+                	System.out.println();
+                	System.out.print("Enter your choice -(Wrong choice to exit): ");
+                	                      ch2=sc.nextInt();
+                	if(ch2==1)
+                	car="Suzuki Ciaz";
+                	else if(ch2==2)
+                	car="Toyota Yaris";
+                	else if(ch2==3)
+                	car="Honda City";
+                	else if(ch2>=4)
+                	                      {
+                	System.out.println("Exiting...");
+                	System.exit(0);
+                	                      }
+                	System.out.println();
+                	break;   
+                	                  }                   
+                	default:
+                	                  {
+                	System.out.println("Exiting...");
+                	System.exit(0);
+                	                  }
+                	               }
+                	            } 
+                	driver();
+             }
+    }
+
+	public void outstation(int ch1)
+    	{
+        Scanner sc=new Scanner(System.in);
+	switch(ch1)
+        {
+	case 2:
+        {
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("                    OUTSTATION");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println();
+		System.out.println(">> Ride out of town at affordable one way and round trip fares with our intercity travel service.");
+		System.out.println(">> Choose from a range of A/C cabs driven by top partners.");
+		System.out.println(">> Fares starting at just Rs.10/km.");
+		System.out.println(">> Safe and comfortable rides.");
+		System.out.println();
+		rdtype="Outstation";
+		System.out.println("--------------------------------------------------------------------------");
+		System.out.println();
+		System.out.print("Enter your pick-up location: ");
+		ploc=sc.nextLine();
+		System.out.println();
+
+		System.out.print("Enter your drop-off location: ");
+		dloc=sc.nextLine();
+		System.out.println();
+
+		System.out.print("Enter the estimated distance: ");
+		dis=sc.nextInt();
+		System.out.println("---------------------------------------------------------------------------");
+		System.out.println();
+
+		System.out.println("Cab options:");
+		System.out.println("1.Prime Play       - Ideal for long rides,family outings");
+		System.out.println("2.Prime SUV        - Ideal for picnics");
+		System.out.println("3.Prime Executive  - Ideal for wedding occasions,business travel");                  
+		System.out.println();     
+		System.out.print("Enter your choice-(Wrong choice to exit): ");
+                ch1=sc.nextInt();
+
+		System.out.println();
+		System.out.println("-------------------------------------------------------------------------");
+		switch(ch1)
+                {
+		case 1:
+                  {
+			category="Prime Play";
+			System.out.println("Prime Play");
+			System.out.println();
+			System.out.println("> High rated Prime sedans with in-cab entertainment.");
+			System.out.println("> Enjoy movies,music,Tv shows ,radio and more ont go");
+			System.out.println();                      
+			System.out.println("No. of seats:4");
+			System.out.println("Base fare:Rs.55");
+			System.out.println("Rate: Rs.9/km");
+			rate=9;
+			bsfare=55;
+			System.out.println();
+			System.out.println("Features:");
+			System.out.println("-Play movies,music,tv shows and more in HD and surround sound");
+			System.out.println("-Play from our library of Apple music,Eros nom and more");
+			System.out.println("-Onboard GPS");
+			System.out.println("-Free Wi-Fi");
+			System.out.println("-AC available");
+			System.out.println();
+			System.out.println();
+			System.out.println("Vehicle Types:");
+			System.out.println("1.Suzuki Ciaz");
+			System.out.println("2.Toyota Yaris");
+			System.out.println("3.Honda City");
+			System.out.println();
+			System.out.print("Enter your choice -(Wrong choice to exit): ");
+			ch2=sc.nextInt();
+			if(ch2==1)
+				car="Suzuki Ciaz";
+			else if(ch2==2)
+				car="Toyota Yaris";
+			else if(ch2==3)
+				car="Honda City";
+			else
+                      	{
+				System.out.println("Exiting...");
+				System.exit(0);
+                      	} 
+			System.out.println();
+			break;
+               }
+
+		case 2:
+                {
+			category="Prime SUV";
+			System.out.println("Prime SUV");
+			System.out.println();
+			System.out.println("> Spacious SUV's with more seats and free Wi-Fi");
+			System.out.println("> Supersized rides");
+			System.out.println("> Enjoy extra legroom and ample boot space for everyone");
+			System.out.println();
+			System.out.println("No. of seats:6");
+			System.out.println("Base fare:Rs.80");
+			System.out.println("Rate: Rs.14/km");
+			rate=14;
+			bsfare=80;
+			System.out.println();
+			System.out.println("Features:");
+			System.out.println("-More seats for entire group of family or friends");
+			System.out.println("-Top quality car drive by 4+ rated drivers");
+			System.out.println("-Onboard GPS");
+			System.out.println("-Free Wi-Fi");
+			System.out.println("-AC available");
+			System.out.println("Can carry more luggage");
+			System.out.println();
+			System.out.println("Vehicle Types:");
+			System.out.println("1.Toyota Innova");
+			System.out.println("2.Maruti Ertiga");
+			System.out.println("3.Mahindra Marrazo");
+			System.out.println();
+			System.out.print("Enter your choice -(Wrong choice to exit): ");
+			ch2=sc.nextInt();
+			if(ch2==1)
+				car="Toyota Innova";
+			else if(ch2==2)
+				car="MarutiErtiga";
+			else if(ch2==3)                      
+				car="MahinderaMarrazo";                                              
+			else
+                      	{
+				System.out.println("Exiting...");
+				System.exit(0);
+                      	} 
+			System.out.println();
+			break;
+                  }
+		case 3:
+                {
+			category="Prime Executive";
+			System.out.println("Prime Executive");
+			System.out.println();
+			System.out.println("> Travel business class in premiun cabs");
+			System.out.println("> Upmarket enteriors and personal chauffers"); 
+			System.out.println();
+			System.out.println("No of seats:4");                    
+			System.out.println("Rate: Rs.12/km");
+			rate=12;                        
+			System.out.println();
+			System.out.println("Features");
+			System.out.println("-Experience business class treatment in your ride");
+			System.out.println("-Top quality cars drive by 4+ rated drivers");
+			System.out.println("-Onboard GPS");
+			System.out.println("-AC available");
+			System.out.println("-Free Wi-fi");
+			System.out.println();                                                                                                                                           
+			System.out.println("Vehicle Types:");
+			System.out.println("1.Mahindra XUV 500");
+			System.out.println("2.Chevorlet Cruze");
+			System.out.println("3.Toyota Corolla Altis");
+			System.out.println();
+			System.out.print("Enter your choice -(Wrong choice to exit): ");
+			ch2=sc.nextInt();
+			if(ch2==1)
+				car="Mahindra XUV 500";
+			else if(ch2==2)
+				car="ChevorletCruze";
+			else if(ch2==3)
+				car="Toyota Corolla Altis";
+			else
+                      	{
+				System.out.println("Exiting...");
+				System.exit(0);
+                      	}                      
+			System.out.println();
+			break;
+                 }
+		default:
+                {
+			System.out.println("Exiting...");
+			System.exit(0);
+                 }
+              }
+           }           
+	System.out.println();
+	driver();
+        }       
+}
+
+public void rental(int ch1)
+{
+        Scanner sc=new Scanner(System.in);
+	switch(ch1)
+        {
+	case 3:
+        {
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("                                            RENTAL");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println();
+		rdtype="Rental";
+		System.out.println(">> With Ola Rentals you get a cab at your disposal.");
+		System.out.println(">> So it be a shopping trip with your friends or just a day out in a new city ,we have you covered");
+		System.out.println(">> Package starts at 1 hour and can be extended upto 4 hours!");
+		System.out.println();
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.print("Enter your pick-up location: ");
+		ploc=sc.nextLine();
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("Select a package:");
+		System.out.println("1.1hr 10km");
+		System.out.println("2.2hr 25km");
+		System.out.println("3.4hr 40km");
+		System.out.println();
+		System.out.print("Enter your choice(Wrong choice to exit): ");
+		int cho1=sc.nextInt();
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println();
+		System.out.println("Cab options:");
+		System.out.println("1.Prime Sedan - Ideal for business travel,family outings");
+		System.out.println("2.Prime SUV   - Ideal for picnics");
+		System.out.println();     
+		System.out.println("Enter your choice-(Wrong choice to exit)");
+                ch1=sc.nextInt();
+		System.out.println();
+
+		switch(ch1)
+                {
+		case 1:
+               	{
+			category="Prime Sedan";
+			System.out.println("Prime sedan");
+			System.out.println();
+			System.out.println("> Top-rated sedans with free Wi-fi");
+			System.out.println("> Add comfort of a high-rated sedan to your daily commute");
+			System.out.println("> Enjoy extra legroom and ample boot space"); 
+			System.out.println();
+			System.out.println("No. of seats:4");
+			if(cho1==1)
+				bsfare=250;
+			else if(cho1==2)
+				bsfare=450;
+			else
+				bsfare=800;	
+			System.out.println("Base fare:Rs."+bsfare);  
+			System.out.println("Rate: Rs.14/km");
+			rate=14;
+			System.out.println();
+			System.out.println("Features:");
+			System.out.println("-Sit back and unwind with extra legroom");
+			System.out.println("-Top quality car drive by 4+ rated drivers");
+			System.out.println("-Free Wi-Fi");
+			System.out.println("-Onboard GPS");
+			System.out.println("-AC available");
+			System.out.println("-Can carry more luggage");                     
+			System.out.println();                  
+			System.out.println("Vehicle Types:");
+			System.out.println("1.Nissan Sunny");
+			System.out.println("2.Suzuki Dzire");
+			System.out.println("3.Toyota Etios");
+			System.out.println();
+			System.out.print("Enter your choice-(Wrong choice to exit): ");
+			ch2=sc.nextInt();            
+			if(ch2==1)
+				car="Nissan Sunny";
+			else if(ch2==2)
+				car="Suzuki Dzire";
+			else if(ch2==3)
+				car="Toyota Etios";
+			else
+                       	{
+				System.out.println("Exiting...");
+				System.exit(0);
+                       	} 
+			System.out.println();                     
+			break;
+                }                                   
+		case 2:
+                {
+			category="Prime SUV";
+			System.out.println("Prime SUV");
+			System.out.println();
+			System.out.println("No. of seats:6");
+			if(cho1==1)
+				bsfare=399;
+			else if(cho1==2)
+				bsfare=730;
+			else
+				bsfare=1100;
+			System.out.println("Base fare: Rs."+bsfare);   
+			System.out.println("Additional Fare: Rs.14/km");
+			rate=14;
+			System.out.println();
+			System.out.println("Features:");
+			System.out.println("-More seats for entire group of family or friends");
+			System.out.println("-Top quality car drive by 4+ rated drivers");
+			System.out.println("-Onboard GPS");
+			System.out.println("-Free Wi-Fi");
+			System.out.println("-AC available");
+			System.out.println("Can carry more luggage");       
+			System.out.println();                               
+			System.out.println("Vehicle Types:");
+			System.out.println("1.Toyota Innova");
+			System.out.println("2.Maruti Ertiga");
+			System.out.println("3.Mahindra Marrazo");
+			System.out.println();
+			System.out.print("Enter your choice -(Wrong choice to exit): ");
+                        ch2=sc.nextInt();                   
+			if(ch2==1)
+				car="Toyota Innova";
+			else if(ch2==2)
+				car="MarutiErtiga";
+			else if(ch2==3)
+				car="MahinderaMarrazo";
+			else
+                      	{
+				System.out.println("Exiting...");
+				System.exit(0);
+                      	} 
+			System.out.println();                       
+			break;
+                     }
+
+		  default:
+                  {
+			System.out.println("Exiting...");
+			System.exit(0);
+                  }
+                }
+             }                              
+	driver();
+        } 
+   }
+
+public void driver()
+{
+	System.out.println("----------------------------------------------------------------------------");
+	System.out.println();
+	System.out.print("Which age driver do you want?(18-45): ");
+	age=sc.nextInt();         
+	if(age>18&&age<=25)
+        {
+		driver="Mahesh Atole";
+		vno="MH 42 V 9697";
+		dpno=9823097280l;
+        }
+	else if(age>25&&age<=35)
+        {
+		driver="Ramesh Pawar";
+		vno="MH 14 V 8693";
+		dpno=9829057683l;
+        }
+	else if(age>35&&age<=45)
+        {
+		driver="PopatraoKulkarni";
+		vno="MH 12 V 4955";
+		dpno=9748561209l;
+        }
+	faredetails();
+}
+
+public void faredetails()
+{
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println("                     FARE DETAILS");
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println();
+
+	if(ch==1)
+       	{
+		System.out.println("Base Fare: Rs."+bsfare);
+		System.out.println();
+		System.out.println("Rate: Rs."+rate);
+		amt=bsfare+((dis-15)*rate);
+		System.out.println();
+		System.out.println("Your Trip: Rs."+amt);
+		tfare=amt+12;
+		System.out.println();
+		System.out.println("Total Fare(includes Rs.12 taxes): "+tfare);
+       }
+
+	if(ch==2)
+       {
+		System.out.println("Rate per km: Rs."+rate);   
+		amt=(dis*rate);
+		System.out.println();
+		System.out.println("Your Trip: Rs."+amt);
+		tfare=amt+321;
+		System.out.println();
+		System.out.println("Total Fare(includes Rs.321 taxes): "+tfare);
+       }
+
+	if(ch==3)
+       {
+		System.out.println("Base Fare: Rs."+bsfare);
+		System.out.println();
+		System.out.println("Additional km fare: Rs."+rate);
+		System.out.println();
+		amt=bsfare;
+		System.out.println("Your Trip: Rs."+amt);
+		System.out.println();
+		tfare=amt+12;
+		System.out.println("Total Fare(includes Rs.12 taxes): "+tfare);
+        } 
+	System.out.println();
+	System.out.println("Do you want Insurance Premium ?(Y/N)");
+	char ip=sc.next().charAt(0);	
+	if(ip=='Y')
+       {
+		tfare=tfare+1.0; 
+       }
+	else
+    	{
+		tfare=tfare;
+       	}
+	System.out.println();
+	System.out.println("Total amount to be paid: Rs."+tfare);
+	System.out.println();
+System.out.println("Do you want to continue?(Y/N)");
+char cn=sc.next().charAt(0);
+if(cn=='Y')
+       {
+payment(); 
+       }
+else
+       {
+System.out.println("Exiting.....");
+System.exit(0);
+       }
+System.out.println();
+   }
+
+public void payment()
+{
+       	Scanner sc=new Scanner(System.in);
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println("                                          PAYMENT METHODS"); System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println();
+	System.out.println("Payment Methods:");
+	System.out.println();
+	System.out.println("1.Cash on Delivery");
+	System.out.println("2.Credit Card");
+	System.out.println();
+	System.out.print("Enter Payment Method:");
+	int cho=sc.nextInt();
+	System.out.println();
+
+	if(cho==1)
+       	{
+		pay="Cash on Delivery";
+		try
+       		{
+			System.out.println("Processing...");
+			System.out.println();
+			Thread.sleep(1000);
+	        }
+	catch(InterruptedException e)
+        {
+		e.printStackTrace(); 
+        }
+	System.out.println("Processing Done!!");
+	System.out.println();
+	bill();
+      	}
+	else if(cho==2)//To make purchase by through card
+       {
+		pay="Credit Card";
+		System.out.print("Enter Credit Card number(16 digits): ");
+		ss=sc.next();
+		System.out.println();
+		if(ss.length()!=16)
+           	{
+			System.out.println("Wrong Credit Card Number!Enter the Credit Card number again!");
+               		String ss1=sc.next();
+			ss=ss1;
+			System.out.println();
+           	}
+		System.out.print("Enter PIN number(4 digits): ");
+		pin=sc.nextInt();
+		System.out.println();
+		if(pin/1000<1||pin/1000>=10)
+           	{
+			System.out.println("Wrong Credit Card Number!Enter the Credit Card number again!");
+			int pin1=sc.nextInt();
+			pin=pin1;
+			System.out.println();
+           	}
+		System.out.print("Enter CVV number(3 digits): ");
+		cvv=sc.nextInt();
+		System.out.println();
+		if(cvv/100<1||cvv/100>=10)//Checking the Credit Card Number
+           	{
+		System.out.println("Wrong CVV number!Enter the CVV number again");
+		int cvv1=sc.nextInt();
+		cvv=cvv1;
+		System.out.println();  
+        }
+	System.out.print("Enter your address");
+        String add=sc.next();          
+	System.out.println();
+	bill();
+      }
+   }
+
+public void bill()
+{
+	Toolkit.getDefaultToolkit().beep();
+       	Calendar c=Calendar.getInstance();     
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println("                                            BILL");
+	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	System.out.println();
+	System.out.println("Date: "+c.get(Calendar.DATE)+"/"+(c.get(Calendar.MONTH)+1)+"/"+c.get(Calendar.YEAR));
+	System.out.println("Name: "+name);
+	System.out.println("Phone Number: "+pno);
+	System.out.println("Pickup Location: "+ploc);
+	System.out.println("Dropoff Location: "+dloc);
+	System.out.println("Ride Type: "+rdtype);
+	System.out.println("Vehicle: "+car);
+	System.out.println("Vehicle No.: "+vno);
+	System.out.println("Driver: "+driver);
+	System.out.println("Driver Phone Number : "+dpno);
+	System.out.println("Total fare to be paid : Rs."+tfare);
+	System.out.println("Payment Option: "+pay);       
+	System.out.println("Time: "+c.get(Calendar.HOUR)+":"+c.get(Calendar.MINUTE)+":"+c.get(Calendar.SECOND));
+	System.out.println();
+	System.out.println();
+	System.out.println();
+	System.out.println("~~~~~~THANK  YOU  FOR  BOOKING WITH US!! ~~~~~ ");
+	System.out.println();
+	System.out.println("~~~~~~~~~~~ PLEASE VISIT AGAIN!!! ~~~~~~~~~~~ ");
+   }
+}
+ 
