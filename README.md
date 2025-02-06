@@ -1,2 +1,2 @@
 # OnlineCabBookingApp
-  An online Cab Booking App in BlueJ Java that allows users to book rides, view driver details, and calculate fares, enhancing transportation convenience and efficiency.
+  Online Cab Booking App is a ride-hailing application that allows users to book rides easily through their smartphones. It connects passengers with drivers of vehicles for hire via the app. Users can request a ride, track the driver's location in real-time, and get an estimated fare before the trip begins. The app offers various ride options, from budget-friendly to premium services, and payments can be made through the app using multiple methods. It provides a convenient and efficient transportation solution.
